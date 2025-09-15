@@ -19,4 +19,5 @@ modelo([
     (Mochila5, Nome5, Mes5, Jogo5, Materia5, Suco5)
 ]) :-
 
-%DEFINIÇÃO DE DOMÍNÍO
+
+%DOMINIO
