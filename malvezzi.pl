@@ -99,6 +99,27 @@ modelo([
     alldifferent([Jogo1, Jogo2, Jogo3, Jogo4, Jogo5]),
     alldifferent([Materia1, Materia2, Materia3, Materia4, Materia5]),
     alldifferent([Suco1, Suco2, Suco3, Suco4, Suco5]),
-    
 
+
+%RESTRICOES
+% 1- O menino que nasceu no mês de setembro está ao lado de quem gosta de suco de laranja
+nasceu(Nome1, setembro), ao_lado(Nome1, Nome2), gosta(Nome2, laranja),
+
+% 2- joao gosta de historia
+gosta(joao, historia),
+
+% 3- O garoto da mochila azul está em algum lugar à esquerda de quem nasceu em maio
+mochila(azul, a_esquerda(Mochila1, Mochila2), nasceu(Nome2, maio),
+
+% 4- Will está ao lado do menino que gosta de prob de logica
+nome(will), ao_lado(Nome1, will), gosta(Nome1, prob_de_logica),
+
+% 5- O garoto da mochila branca está exatamente à esquerda de Will
+mochila(branca), exatamente_a_esquerda(Mochila1, Mochila2), nome(will),
+
+% 6- Na terceira posição está quem gosta de suco de morango
+Suco3 == morango,
+
+% 7- Quem gosta de suco de uva gosta de prob de logica
+gosta(Nome1, uva), gosta(Nome1, prob_de_logica),
 
