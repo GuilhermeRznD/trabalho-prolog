@@ -10,6 +10,26 @@ main :-
     write('\n\nFim da busca. Tempo total (cputime): '), write(T2), nl.
 
 
+%REGRAS AUXILIARES
+%A ESQUERDA
+    a_esquerda(pos1, pos2) :-
+        pos1 < pos2.
+        
+%AO LADO
+    ao_lado(pos1, pos2) :-
+        pos2 is pos1 + 1.
+    ao_lado(pos2, pos1) :-
+        pos2 is pos1 + 1.
+
+%EXATAMENTE A ESQUERDA
+    exatamente_a_esquerda(pos1, pos2) :-
+        pos2 is pos1 + 1.
+
+%ALGUM LUGAR A DIREITA
+    algum_lugar_a_direita(pos1, pos2) :-
+        pos2 > pos1.
+
+
 %DEFINICAO DOS DOMINIOS
 %MOCHILAS
     mochila(amarela).
@@ -55,7 +75,6 @@ main :-
 
 
 %MODELO
-
 modelo([
     (Mochila1, Nome1, Mes1, Jogo1, Materia1, Suco1),
     (Mochila2, Nome2, Mes2, Jogo2, Materia2, Suco2),
@@ -81,4 +100,5 @@ modelo([
     alldifferent([Materia1, Materia2, Materia3, Materia4, Materia5]),
     alldifferent([Suco1, Suco2, Suco3, Suco4, Suco5]),
     
+
 
