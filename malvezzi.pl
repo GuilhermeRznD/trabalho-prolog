@@ -9,6 +9,51 @@ main :-
     statistics(cputime, T2),
     write('\n\nFim da busca. Tempo total (cputime): '), write(T2), nl.
 
+
+%DEFINICAO DOS DOMINIOS
+%MOCHILAS
+    mochila(amarela).
+    mochila(azul).
+    mochila(branca).
+    mochila(verde).
+    mochila(vermelha).
+
+%NOMES
+    nome(denis).
+    nome(joao).
+    nome(lenin).
+    nome(otavio).
+    nome(will).
+
+%MES
+    mes(agosto).
+    mes(dezembro).
+    mes(janeiro).
+    mes(maio).
+    mes(setembro).
+
+%JOGO
+    jogo(3_ou_mais).
+    jogo(caca_palavras).
+    jogo(cubo_vermelho).
+    jogo(jogo_da_forca).
+    jogo(prob_de_logica).
+
+%MATERIA
+    materia(biologia).
+    materia(geografia).
+    materia(historia).
+    materia(matemarica).
+    mateira(portugues).
+
+%SUCO
+    suco(laranja).
+    suco(limao).
+    suco(maracuja).
+    suco(morango).
+    suco(uva).
+
+
 %MODELO
 
 modelo([
@@ -19,7 +64,7 @@ modelo([
     (Mochila5, Nome5, Mes5, Jogo5, Materia5, Suco5)
 ]) :-
 
-
+    
 %DOMINIO
     mochila(Mochila1), mochila(Mochila2), mochila(Mochila3), mochila(Mochila4), mochila(Mochila5),
     nome(Nome1), nome(Nome2), nome(Nome3), nome(Nome4), nome(Nome5),
@@ -36,3 +81,4 @@ modelo([
     alldifferent([Materia1, Materia2, Materia3, Materia4, Materia5]),
     alldifferent([Suco1, Suco2, Suco3, Suco4, Suco5]),
     
+
