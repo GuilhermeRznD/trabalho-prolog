@@ -109,7 +109,7 @@ nasceu(Nome1, setembro), ao_lado(Nome1, Nome2), gosta(Nome2, laranja),
 gosta(joao, historia),
 
 % 3- O garoto da mochila azul está em algum lugar à esquerda de quem nasceu em maio
-mochila(azul, a_esquerda(Mochila1, Mochila2), nasceu(Nome2, maio),
+mochila(azul), a_esquerda(Mochila1, Mochila2), nasceu(Nome2, maio),
 
 % 4- Will está ao lado do menino que gosta de prob de logica
 nome(will), ao_lado(Nome1, will), gosta(Nome1, prob_de_logica),
@@ -136,7 +136,7 @@ gosta(Nome1, biologia), gosta(Nome1, morango),
 nasceu(Nome1, janeiro), ao_lado(Nome1, Nome2), nasceu(Nome2, setembro),
 
 % 12- Quem gosta de suco de uva está exatamente à esquerda de quem gosta de portugues
-gosta(Nome1, uva), gosta(Nome2, portugues), exatamente_a_esquerda(Nome1, Nome2
+gosta(Nome1, uva), gosta(Nome2, portugues), exatamente_a_esquerda(Nome1, Nome2),
 
 % 13- O menino que gosta de matematica nasceu em dezembro
 gosta(Nome1, matematica), nasceu(Nome1, dezembro),
@@ -160,14 +160,15 @@ gosta(Nome1, matematica), gosta(Nome1, maracuja),
 nome(lenin), Pos == 5,
 
 % 20- Em uma das pontas está o menino que adora jogar cubo vermelho
-jogo(cubo_vermelho), (Pos == 1: Pos == 5),
+jogo(cubo_vermelho), (Pos == 1; Pos == 5),
 
 % 21- Quem gosta do jogo da forca está ao lado do dono da mochila vermelha
 gosta(jogo_da_forca), mochila(vermelha), ao_lado(Jogo1, Mochila),
 
 % 22- Otavio está em uma das pontas
-nome(otavio), (Pos == 1: Pos == 5),
+nome(otavio), (Pos == 1; Pos == 5),
 
 % 23- Na terceira posição está o menino que gosta do jogo da forca
 Jogo3 == jogo_da_forca.
+
 
