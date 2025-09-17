@@ -1,5 +1,4 @@
-
-% PREDICADO PRINCIPAL E IMPRESSÃO 
+% PREDICADO PRINCIPAL E IMPRESSÃO (FORMATO DE LISTA)
 
 main :-
     write('Resolvendo o quebra-cabeça de lógica...'), nl,
@@ -31,7 +30,7 @@ imprime_meninos([(Mochila, Nome, Mes, Jogo, Materia, Suco)|Resto], Index) :-
 
 solucao(Solucao) :-
 
-    % ESTRUTURA DA SOLUÇÃO
+    % 1. ESTRUTURA DA SOLUÇÃO
     Solucao = [
         (Mochila_1, Nome_1, Mes_1, Jogo_1, Materia_1, Suco_1),
         (Mochila_2, Nome_2, Mes_2, Jogo_2, Materia_2, Suco_2),
@@ -40,37 +39,23 @@ solucao(Solucao) :-
         (Mochila_5, Nome_5, Mes_5, Jogo_5, Materia_5, Suco_5)
     ],
 
-    % APLICAÇÃO DOS DOMÍNIOS
-    mochila(Mochila_1), mochila(Mochila_2), mochila(Mochila_3), mochila(Mochila_4), mochila(Mochila_5),
-    nome(Nome_1), nome(Nome_2), nome(Nome_3), nome(Nome_4), nome(Nome_5),
-    mes(Mes_1), mes(Mes_2), mes(Mes_3), mes(Mes_4), mes(Mes_5),
-    jogo(Jogo_1), jogo(Jogo_2), jogo(Jogo_3), jogo(Jogo_4), jogo(Jogo_5),
-    materia(Materia_1), materia(Materia_2), materia(Materia_3), materia(Materia_4), materia(Materia_5),
-    suco(Suco_1), suco(Suco_2), suco(Suco_3), suco(Suco_4), suco(Suco_5),
-
-    % RESTRIÇÕES DE UNICIDADE
-    alldifferent([Mochila_1, Mochila_2, Mochila_3, Mochila_4, Mochila_5]),
-    alldifferent([Nome_1, Nome_2, Nome_3, Nome_4, Nome_5]),
-    alldifferent([Mes_1, Mes_2, Mes_3, Mes_4, Mes_5]),
-    alldifferent([Jogo_1, Jogo_2, Jogo_3, Jogo_4, Jogo_5]),
-    alldifferent([Materia_1, Materia_2, Materia_3, Materia_4, Materia_5]),
-    alldifferent([Suco_1, Suco_2, Suco_3, Suco_4, Suco_5]),
-
-    % -- Regras de Posição Fixa e Associação Direta --
+    % 2. APLICAR AS REGRAS MAIS FORTES (POSIÇÃO FIXA) PRIMEIRO
     Suco_3 = morango,
     Jogo_3 = jogo_da_forca,
     Suco_1 = limao,
     Nome_5 = lenin,
     (Nome_1 = otavio ; Nome_5 = otavio),
     (Jogo_1 = cubo_vermelho ; Jogo_5 = cubo_vermelho),
-    member((_, joao, _, _, historia, _), Solucao),
+
+    % 3. APLICAR REGRAS DE ASSOCIAÇÃO FORTE (MEMBER)
     member((_, _, _, _, biologia, morango), Solucao),
     member((azul, _, janeiro, _, _, _), Solucao),
     member((_, _, _, prob_de_logica, _, uva), Solucao),
+    member((_, joao, _, _, historia, _), Solucao),
     member((_, _, dezembro, _, matematica, _), Solucao),
     member((_, _, _, _, matematica, maracuja), Solucao),
 
-    % -- Relações de Vizinhança e Posição Relativa --
+    % 4. APLICAR REGRAS DE POSIÇÃO RELATIVA (VIZINHANÇA)
     ao_lado((_,_,setembro,_,_,_), (_,_,_,_,_,laranja), Solucao),
     ao_lado((_,will,_,_,_,_), (_,_,_,prob_de_logica,_,_), Solucao),
     a_esquerda_imediata((branca,_,_,_,_,_), (_,will,_,_,_,_), Solucao),
@@ -81,9 +66,28 @@ solucao(Solucao) :-
     a_esquerda((azul,_,_,_,_,_), (_,_,maio,_,_,_), Solucao),
     ao_lado((_,_,_,prob_de_logica,_,_), (amarela,_,_,_,_,_), Solucao),
     ao_lado((_,_,setembro,_,_,_), (_,_,_,cubo_vermelho,_,_), Solucao),
-    ao_lado((_,_,_,jogo_da_forca,_,_), (vermelha,_,_,_,_,_), Solucao).
+    ao_lado((_,_,_,jogo_da_forca,_,_), (vermelha,_,_,_,_,_), Solucao),
 
-% PREDICADOS AUXILIARES (sem alterações)
+    % 5. GERAR DOMÍNIOS E VERIFICAR UNICIDADE 
+    mochila(Mochila_1), mochila(Mochila_2), mochila(Mochila_3), mochila(Mochila_4), mochila(Mochila_5),
+    alldifferent([Mochila_1, Mochila_2, Mochila_3, Mochila_4, Mochila_5]),
+    
+    nome(Nome_1), nome(Nome_2), nome(Nome_3), nome(Nome_4), nome(Nome_5),
+    alldifferent([Nome_1, Nome_2, Nome_3, Nome_4, Nome_5]),
+    
+    mes(Mes_1), mes(Mes_2), mes(Mes_3), mes(Mes_4), mes(Mes_5),
+    alldifferent([Mes_1, Mes_2, Mes_3, Mes_4, Mes_5]),
+    
+    jogo(Jogo_1), jogo(Jogo_2), jogo(Jogo_3), jogo(Jogo_4), jogo(Jogo_5),
+    alldifferent([Jogo_1, Jogo_2, Jogo_3, Jogo_4, Jogo_5]),
+    
+    materia(Materia_1), materia(Materia_2), materia(Materia_3), materia(Materia_4), materia(Materia_5),
+    alldifferent([Materia_1, Materia_2, Materia_3, Materia_4, Materia_5]),
+    
+    suco(Suco_1), suco(Suco_2), suco(Suco_3), suco(Suco_4), suco(Suco_5),
+    alldifferent([Suco_1, Suco_2, Suco_3, Suco_4, Suco_5]).
+
+% PREDICADOS AUXILIARES
 
 % Garante que todos os elementos de uma lista são diferentes.
 alldifferent([]).
@@ -107,7 +111,7 @@ a_esquerda(X, Y, Solucao) :-
 % X está imediatamente à esquerda de Y
 a_esquerda_imediata(X, Y, Solucao) :- nextto(X, Y, Solucao).
 
-% FATOS (DOMÍNIOS POSSÍVEIS) (sem alterações)
+% FATOS (DOMÍNIOS POSSÍVEIS)
 
 mochila(amarela). mochila(azul). mochila(branca). mochila(verde). mochila(vermelha).
 nome(denis). nome(joao). nome(lenin). nome(otavio). nome(will).
