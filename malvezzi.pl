@@ -123,3 +123,51 @@ Suco3 == morango,
 % 7- Quem gosta de suco de uva gosta de prob de logica
 gosta(Nome1, uva), gosta(Nome1, prob_de_logica),
 
+% 8- O garoto que gosta do jogo da forca está ao lado do que gosta do 3 ou mais
+jogo(jogo_da_forca), ao_lado(Jogo1, Jogo2), jogo('3_ou_mais'),
+
+% 9- O menino que gosta de suco de uva está em algum lugar à direita do garoto da mochila azul
+suco(uva), mochila(azul), algum_lugar_a_direita(Mochila1, Mochila2),
+
+% 10- O garoto que gosta de biologia gosta de suco de morango
+gosta(Nome1, biologia), gosta(Nome1, morango),
+
+% 11- O menino que nasceu em janeiro está ao lado de quem nasceu em setembro
+nasceu(Nome1, janeiro), ao_lado(Nome1, Nome2), nasceu(Nome2, setembro),
+
+% 12- Quem gosta de suco de uva está exatamente à esquerda de quem gosta de portugues
+gosta(Nome1, uva), gosta(Nome2, portugues), exatamente_a_esquerda(Nome1, Nome2
+
+% 13- O menino que gosta de matematica nasceu em dezembro
+gosta(Nome1, matematica), nasceu(Nome1, dezembro),
+
+% 14- Quem gosta de prob de logica está ao lado do menino da mochila amarela
+gosta(Nome1, prob_de_logica), mochila(amarela), ao_lado(Nome1, Mochila1),
+
+% 15- dono da mochila azul nasceu em janeiro
+mochila(azul), nasceu(Nome1, janeiro),
+
+% 16- O garoto que nasceu em setembro está ao lado de quem gosta do jogo cubo vermelho
+nasceu(Nome1, setembro), ao_lado(Nome1, Nome2), jogo(cubo_vermelho),
+
+% 17- Na primeira posição está quem gosta de suco de limao
+Suco1 == limao,
+
+% 18- Quem gosta de matematica gosta de suco de maracuja
+gosta(Nome1, matematica), gosta(Nome1, maracuja),
+
+% 19- Lenin está na quinta posição
+nome(lenin), Pos == 5,
+
+% 20- Em uma das pontas está o menino que adora jogar cubo vermelho
+jogo(cubo_vermelho), (Pos == 1: Pos == 5),
+
+% 21- Quem gosta do jogo da forca está ao lado do dono da mochila vermelha
+gosta(jogo_da_forca), mochila(vermelha), ao_lado(Jogo1, Mochila),
+
+% 22- Otavio está em uma das pontas
+nome(otavio), (Pos == 1: Pos == 5),
+
+% 23- Na terceira posição está o menino que gosta do jogo da forca
+Jogo3 == jogo_da_forca.
+
